@@ -130,22 +130,22 @@
                             <div class="col-6">
                                 <button class="mt-3 btn btn-primary w-100" type="button"
                                     style="border-radius: 10px; height:100px">
-                                    PUKUL</button>
+                                    JATUH</button>
                             </div>
                             <div class="col-6">
                                 <button class="mt-3 btn btn-primary w-100" type="button"
                                     style="border-radius: 10px; height:100px">
-                                    PUKUL</button>
+                                    BINA</button>
                             </div>
                             <div class="col-6">
                                 <button class="mt-3 btn btn-primary w-100" type="button"
                                     style="border-radius: 10px; height:100px">
-                                    PUKUL</button>
+                                    TEGURAN</button>
                             </div>
                             <div class="col-6">
                                 <button class="mt-3 btn btn-primary w-100" type="button"
                                     style="border-radius: 10px; height:100px">
-                                    PUKUL</button>
+                                    PERINGATAN</button>
                             </div>
                             <div class="col-6">
                                 <button class="mt-3 btn btn-primary w-100 h-75" type="button"
@@ -352,22 +352,22 @@
                                 <div class="col-6 ps-3">
                                     <button class="mt-3 btn btn-danger w-100" type="button"
                                         style="border-radius: 10px; height:100px">
-                                        PUKUL</button>
+                                        JATUH</button>
                                 </div>
                                 <div class="col-6 pe-3">
                                     <button class="mt-3 btn btn-danger w-100" type="button"
                                         style="border-radius: 10px; height:100px">
-                                        PUKUL</button>
+                                        BINA</button>
                                 </div>
                                 <div class="col-6 ps-3">
                                     <button class="mt-3 btn btn-danger w-100" type="button"
                                         style="border-radius: 10px; height:100px">
-                                        PUKUL</button>
+                                        TEGURAN</button>
                                 </div>
                                 <div class="col-6 pe-3">
                                     <button class="mt-3 btn btn-danger w-100" type="button"
                                         style="border-radius: 10px; height:100px">
-                                        PUKUL</button>
+                                        PERINGATAN</button>
                                 </div>
                                 <div class="col-6">
                                     <button class="mt-3 btn btn-primary w-100 h-75" type="button"

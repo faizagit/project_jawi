@@ -40,15 +40,15 @@
                             <div class="d-flex flex-column">
                                 <div class="d-flex justify-content-around mt-3">
                                     <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
-                                        style="width:60px ; height: 60px;">
-                                    <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
-                                        style="width:60px ; height: 60px;">
-                                </div>
-                                <div class="d-flex justify-content-around mt-3">
-                                    <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
                                         style="width:60px;height:60px;rotate:90deg">
                                     <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
                                         style="width:60px;height: 60px;rotate:90deg">
+                                </div>
+                                <div class="d-flex justify-content-around mt-3">
+                                    <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
+                                        style="width:60px ; height: 60px;">
+                                    <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
+                                        style="width:60px ; height: 60px;">
                                 </div>
                                 <div class="d-flex justify-content-around mt-3">
                                     <img src="{{ asset('assets') }}/img/icon/icon-wasit.png" alt="lah"
@@ -96,15 +96,16 @@
                             <div class="d-flex flex-column">
                                 <div class="d-flex justify-content-around mt-3">
                                     <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
-                                        style="width:60px ; height: 60px;">
-                                    <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
-                                        style="width:60px ; height: 60px;">
-                                </div>
-                                <div class="d-flex justify-content-around mt-3">
-                                    <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
                                         style="width:60px;height:60px;rotate:270deg">
                                     <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
                                         style="width:60px;height: 60px;rotate:270deg">
+
+                                </div>
+                                <div class="d-flex justify-content-around mt-3">
+                                    <img src="{{ asset('assets') }}/img/icon/icon-onefinger.png" alt="lah"
+                                        style="width:60px ; height: 60px;">
+                                    <img src="{{ asset('assets') }}/img/icon/icon-twofinger.png" alt="lah"
+                                        style="width:60px ; height: 60px;">
                                 </div>
                                 <div class="d-flex justify-content-around mt-3">
                                     <img src="{{ asset('assets') }}/img/icon/icon-wasit.png" alt="lah"
