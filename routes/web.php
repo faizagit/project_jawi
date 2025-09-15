@@ -158,6 +158,30 @@ Route::get('/seni/pemasalan/regu/dewan', function(){
 Route::get('/seni/pemasalan/regu/penonton', function(){
     return view('seni.pemasalan.regu.penonton');
 });
+Route::get('/seni/pemasalan/solokreatif/juri', function(){
+    return view('seni.pemasalan.soloKreatif.juri');
+});
+Route::get('/seni/pemasalan/solokreatif/dewan', function(){
+    return view('seni.pemasalan.soloKreatif.dewan');
+});
+Route::get('/seni/pemasalan/solokreatif/dewanOperator', function(){
+    return view('seni.pemasalan.soloKreatif.dewanOperator');
+});
+Route::get('/seni/pemasalan/solokreatif/penonton', function(){
+    return view('seni.pemasalan.soloKreatif.penonton');
+});
+Route::get('/seni/prestasi/solokreatif/juri', function(){
+    return view('seni.prestasi.soloKreatif.juri');
+});
+Route::get('/seni/prestasi/solokreatif/dewan', function(){
+    return view('seni.prestasi.soloKreatif.dewan');
+});
+Route::get('/seni/prestasi/solokreatif/dewanOperator', function(){
+    return view('seni.prestasi.soloKreatif.dewanOperator');
+});
+Route::get('/seni/prestasi/solokreatif/penonton', function(){
+    return view('seni.prestasi.soloKreatif.penonton');
+});
 Route::get('/seni/timer', function(){
     return view('seni.timer.timer');
 });
@@ -182,6 +206,19 @@ Route::get('/jurusbaku/berkelompok/juri', function(){
 
 
 
+// bersenjata
+Route::get('/seni/ganda/bersenjata/juri', function(){
+    return view('seni.pemasalan.ganda.bersenjata.juri');
+});
+Route::get('/seni/ganda/tangankosong/juri', function(){
+    return view('seni.pemasalan.ganda.tangankosong.juri');
+});
+Route::get('/seni/tunggal/bersenjata/juri', function(){
+    return view('seni.pemasalan.tunggal.bersenjata.juri');
+});
+Route::get('/seni/tunggal/tangankosong/juri', function(){
+    return view('seni.pemasalan.tunggal.tangankosong.juri');
+});
 
 
 

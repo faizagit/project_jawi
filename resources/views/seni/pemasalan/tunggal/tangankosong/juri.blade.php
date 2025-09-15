@@ -12,7 +12,7 @@
         <div class="bg-white rounded-xl shadow-md p-6 mb-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
-                    <div class="w-16 h-16 bg-gradient-to-br from-gray-500 to-gray-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                         AS
                     </div>
                     <div>
@@ -20,9 +20,11 @@
                         <p class="text-gray-600">Kontingen DKI Jakarta</p>
                     </div>
                 </div>
+                <div class="text-white text-lg border-1 bg-red-500 p-2 rounded-xl">Tangan Kosong</div>
+
                 <div class="text-right">
-                    <h1 class="text-2xl font-bold text-gray-600">Dewasa Tunggal Putra</h1>
-                    <p class="text-gray-600">Kategori Tanding</p>
+                    <h1 class="text-2xl font-bold text-red-600">Dewasa Tunggal Putra</h1>
+                    <p class="text-gray-600">Juri-1</p>
                 </div>
             </div>
         </div>
@@ -31,7 +33,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <!-- Wrong Move Card -->
             <div class="bg-red-500 rounded-xl shadow-md p-8 flex flex-col items-center justify-center min-h-64">
-                <button id="wrongMoveBtn" class="text-white font-bold py-8 px-12 text-3xl transition-colors duration-200 w-full h-full">
+                <button id="wrongMoveBtn" class="text-white font-bold py-8 px-6 text-3xl transition-colors duration-200 w-full h-full">
                     <div class="text-6xl mb-4">✗</div>
                     Wrong Move
                 </button>
@@ -40,7 +42,7 @@
             <!-- Center Info Card -->
             <div class="bg-white rounded-xl shadow-md p-6">
                 <div class="text-center mb-6">
-                    <h3 class="text-3xl font-bold text-gray-600 mb-2">Jurus ke: <span id="currentMove">1</span></h3>
+                    <h3 class="text-3xl font-bold text-red-600 mb-2">Jurus ke: <span id="currentMove">1</span></h3>
                     <p class="text-xl text-red-500 font-semibold">Kesalahan: <span id="currentErrors">0</span> (Jurus ini)</p>
                 </div>
                 
@@ -58,7 +60,7 @@
 
             <!-- Next Move Card -->
             <div class="bg-green-500 rounded-xl shadow-md p-8 flex flex-col items-center justify-center min-h-64">
-                <button id="nextMoveBtn" class="text-white font-bold py-8 px-12 text-3xl transition-colors duration-200 w-full h-full">
+                <button id="nextMoveBtn" class="text-white font-bold py-8 px-6 text-3xl transition-colors duration-200 w-full h-full">
                     <div class="text-6xl mb-4">→</div>
                     Next Move
                 </button>
@@ -77,7 +79,7 @@
             </div>
 
             <!-- Final Score Card -->
-            <div class="bg-blue-500 rounded-xl shadow-md p-6">
+            <div class="bg-red-500 rounded-xl shadow-md p-6">
                 <h3 class="text-xl font-semibold text-white mb-4 text-center">TOTAL NILAI AKHIR</h3>
                 <div class="text-center">
                     <div class="text-6xl font-bold text-white" id="finalScore">9.90</div>
@@ -91,7 +93,7 @@
         // Game state
         let currentMove = 1;
         let moveErrors = {}; // Track errors per move
-        let totalCategoryScore = 0.00; // Category score (can be changed within moves 1-14)
+        let totalCategoryScore = 0.00; // Category score (can be changed within moves 1-6)
         const penaltyPerError = 0.01;
         const baseScore = 9.90;
 
@@ -113,8 +115,8 @@
         function generateScoreButtons() {
             scoreButtonsContainer.innerHTML = '';
             
-            // Show buttons if we're within moves 1-14
-            if (currentMove <= 7) {
+            // Show buttons if we're within moves 1-6
+            if (currentMove <= 6) {
                 for (let i = 1; i <= 10; i++) {
                     const score = (i * 0.01).toFixed(2);
                     const button = document.createElement('button');
@@ -131,18 +133,18 @@
                     scoreButtonsContainer.appendChild(button);
                 }
             } else {
-                // Show disabled message for moves beyond 14
+                // Show disabled message for moves beyond 6
                 const message = document.createElement('div');
                 message.className = 'text-center text-gray-500 italic py-4';
-                message.textContent = 'Nilai kategori hanya untuk jurus 1-14';
+                message.textContent = 'Nilai kategori hanya untuk jurus 1-6';
                 scoreButtonsContainer.appendChild(message);
             }
         }
 
         // Select score button
         function selectScore(button, score) {
-            // Only allow selection if we're within moves 1-14
-            if (currentMove > 7) {
+            // Only allow selection if we're within moves 1-6
+            if (currentMove > 6) {
                 return;
             }
             
@@ -155,7 +157,7 @@
             // Highlight selected button
             button.className = 'px-3 py-2 rounded-full text-sm font-medium transition-colors duration-200 bg-green-500 hover:bg-green-600 text-white';
             
-            // Update category score (can be changed anytime within moves 1-14)
+            // Update category score (can be changed anytime within moves 1-6)
             totalCategoryScore = score;
             categoryScoreEl.textContent = score.toFixed(2);
             updateDisplay();
@@ -168,6 +170,19 @@
 
 
 
+        // Update next move button state
+        function updateNextMoveButton() {
+            if (currentMove >= 6) {
+                // Disable the button visually and functionally
+                nextMoveBtn.className = 'text-gray-400 font-bold py-8 px-6 text-3xl w-full h-full cursor-not-allowed opacity-50';
+                nextMoveBtn.disabled = true;
+            } else {
+                // Keep button active
+                nextMoveBtn.className = 'text-white font-bold py-8 px-6 text-3xl transition-colors duration-200 w-full h-full';
+                nextMoveBtn.disabled = false;
+            }
+        }
+
         // Update displays
         function updateDisplay() {
             currentMoveEl.textContent = currentMove;
@@ -178,6 +193,9 @@
             
             const finalScore = Math.max(0, baseScore - (totalErrors * penaltyPerError) + totalCategoryScore);
             finalScoreEl.textContent = finalScore.toFixed(2);
+            
+            // Update next move button state
+            updateNextMoveButton();
         }
 
         // Wrong move button handler
@@ -195,24 +213,34 @@
 
         // Next move button handler
         nextMoveBtn.addEventListener('click', () => {
+            // Don't proceed if we've reached the maximum moves
+            if (currentMove >= 6) {
+                return;
+            }
+            
             currentMove++;
             moveErrors[currentMove] = 0;
             updateDisplay();
             
-            // Regenerate score buttons (will show disabled if beyond move 14)
+            // Regenerate score buttons (will show disabled if beyond move 6)
             generateScoreButtons();
             
             // Keep showing the category score
             categoryScoreEl.textContent = totalCategoryScore.toFixed(2);
             
-            // Add visual feedback
-            nextMoveBtn.classList.add('scale-95');
-            setTimeout(() => nextMoveBtn.classList.remove('scale-95'), 150);
+            // Update next move button state
+            updateNextMoveButton();
+            
+            // Add visual feedback only if button is still active
+            if (currentMove < 6) {
+                nextMoveBtn.classList.add('scale-95');
+                setTimeout(() => nextMoveBtn.classList.remove('scale-95'), 150);
+            }
         });
 
         // Initialize
         generateScoreButtons();
         updateDisplay();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ac9dcc870e4112',t:'MTc1NzE0NzU1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e5f99d17d94028',t:'MTc1Nzc0OTAwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

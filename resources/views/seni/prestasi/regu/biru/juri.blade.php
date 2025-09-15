@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <h1 class="text-2xl font-bold text-blue-600">Dewasa Regu Putra</h1>
+                    <h1 class="text-2xl font-bold text-blue-600">Dewasa Ganda Putra</h1>
                     <p class="text-gray-600">Kategori Tanding</p>
                 </div>
             </div>
@@ -182,6 +182,19 @@
 
 
 
+        // Update next move button state
+        function updateNextMoveButton() {
+            if (currentMove >= 14) {
+                // Disable the button visually and functionally
+                nextMoveBtn.className = 'text-gray-400 font-bold py-8 px-12 text-3xl w-full h-full cursor-not-allowed opacity-50';
+                nextMoveBtn.disabled = true;
+            } else {
+                // Keep button active
+                nextMoveBtn.className = 'text-white font-bold py-8 px-12 text-3xl transition-colors duration-200 w-full h-full';
+                nextMoveBtn.disabled = false;
+            }
+        }
+
         // Update displays
         function updateDisplay() {
             currentMoveEl.textContent = currentMove;
@@ -192,6 +205,9 @@
             
             const finalScore = Math.max(0, baseScore - (totalErrors * penaltyPerError) + totalCategoryScore);
             finalScoreEl.textContent = finalScore.toFixed(2);
+            
+            // Update next move button state
+            updateNextMoveButton();
         }
 
         // Wrong move button handler
@@ -209,6 +225,11 @@
 
         // Next move button handler
         nextMoveBtn.addEventListener('click', () => {
+            // Don't proceed if we've reached the maximum moves
+            if (currentMove >= 14) {
+                return;
+            }
+            
             currentMove++;
             moveErrors[currentMove] = 0;
             updateDisplay();
@@ -219,14 +240,19 @@
             // Keep showing the category score
             categoryScoreEl.textContent = totalCategoryScore.toFixed(2);
             
-            // Add visual feedback
-            nextMoveBtn.classList.add('scale-95');
-            setTimeout(() => nextMoveBtn.classList.remove('scale-95'), 150);
+            // Update next move button state
+            updateNextMoveButton();
+            
+            // Add visual feedback only if button is still active
+            if (currentMove < 14) {
+                nextMoveBtn.classList.add('scale-95');
+                setTimeout(() => nextMoveBtn.classList.remove('scale-95'), 150);
+            }
         });
 
         // Initialize
         generateScoreButtons();
         updateDisplay();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97ac9dcc870e4112',t:'MTc1NzE0NzU1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e5f99d17d94028',t:'MTc1Nzc0OTAwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
