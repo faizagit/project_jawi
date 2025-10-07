@@ -37,6 +37,10 @@ Route::get('/operator', [OperatorController::class, 'index']);
 
 Route::get('/penilaian', [PenilaianController::class, 'index']);
 
+Route::get('/dewanoperator', function(){
+    return view('dewanOperator');
+});
+
 
 
 // seni
